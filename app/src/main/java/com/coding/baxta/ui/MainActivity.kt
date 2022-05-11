@@ -1,7 +1,8 @@
-package com.coding.baxta
+package com.coding.baxta.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.coding.baxta.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

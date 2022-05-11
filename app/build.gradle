@@ -48,6 +48,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    //core
+    implementation "io.ktor:ktor-client-core:$ktor_version"
     //ktor
     implementation "io.ktor:ktor-client-android:$ktor_version"
     //okhttp
@@ -56,6 +58,8 @@ dependencies {
     implementation "io.ktor:ktor-client-content-negotiation:$ktor_version"
     //serialization plugin
     implementation "io.ktor:ktor-serialization-kotlinx-json:$ktor_version"
+    //loggin
+    implementation "io.ktor:ktor-client-logging:$ktor_version"
 
     //room
     implementation "androidx.room:room-runtime:$room_version"
