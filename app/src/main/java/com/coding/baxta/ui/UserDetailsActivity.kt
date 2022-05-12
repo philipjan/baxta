@@ -51,7 +51,6 @@ class UserDetailsActivity : BaseActivity() {
                         log("User Details: $it")
                         when (it) {
                             is UserState.GetUserInfoSuccess -> {
-                                showToast(this@UserDetailsActivity, "Name: ${it.user.fullName}")
                                 displayData(it.user)
                             }
                             is UserState.Error -> {
@@ -70,5 +69,7 @@ class UserDetailsActivity : BaseActivity() {
         binder.age.text = user.getAge()
         binder.email.text = user.email
         binder.favorite.text = user.favoriteAnimal
+        binder.userName.text = user.userName
+        binder.followerCount.text = user.followersCount.toString()
     }
 }

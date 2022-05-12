@@ -15,8 +15,7 @@ class UserAdapter : ListAdapter<User, UserAdapter.VH>(UserItemCallback) {
     inner class VH(private val binder: LiUserBinding) : RecyclerView.ViewHolder(binder.root) {
         fun bind(user: User) {
             binder.fullName.text = user.fullName
-            binder.age.text = user.getAge()
-            binder.favorite.text = user.favoriteAnimal
+            binder.userName.text = user.userName
             binder.followerCount.text = user.followersCount.toString()
             binder.root.setOnClickListener {
                 clickListener(user)

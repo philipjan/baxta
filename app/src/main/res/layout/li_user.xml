@@ -26,29 +26,16 @@
             tools:text= "Amber Heard"/>
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/favorite"
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.Material3.LabelMedium"
             app:layout_constraintTop_toBottomOf="@+id/fullName"
             app:layout_constraintStart_toStartOf="parent"
-            android:drawableStart="@drawable/ic_favorite"
+            android:drawableStart="@drawable/ic_user_2"
             android:drawablePadding="3dp"
-            tools:text="Sony, Bose, Senheisser"
+            tools:text="usernamexxyy"
             app:drawableTint="@color/teal_700"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="16yrs"
-            app:layout_constraintTop_toBottomOf="@+id/favorite"
-            app:layout_constraintStart_toStartOf="parent"
-            style="@style/TextAppearance.Material3.LabelMedium"
-            android:layout_marginTop="4dp"
-            android:drawableStart="@drawable/ic_age"
-            android:drawablePadding="3dp"
-            app:drawableTint="@color/purple_200"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/followerCount"
@@ -58,7 +45,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/fullName"
             app:layout_constraintTop_toTopOf="@+id/fullName"
-            app:layout_constraintBottom_toBottomOf="@+id/age"
+            app:layout_constraintBottom_toBottomOf="@+id/userName"
             style="@style/TextAppearance.Material3.LabelSmall"
             tools:text="10002132312312123121"
             app:layout_constraintHorizontal_bias="1"

@@ -10,7 +10,8 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,55 +21,89 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/fullName"
+                style="@style/TextAppearance.Material3.HeadlineSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextAppearance.Material3.HeadlineSmall"
                 app:fontFamily="sans-serif"
-                tools:text="Johhny Depp"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Johhny Depp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="madammeamberheard@gmail.com"
-                app:layout_constraintTop_toBottomOf="@+id/fullName"
-                app:layout_constraintStart_toStartOf="@+id/fullName"
-                app:layout_constraintEnd_toEndOf="@+id/fullName"
-                app:fontFamily="sans-serif-light"
-                android:textStyle="italic"
                 android:drawableStart="@drawable/ic_email"
-                android:drawablePadding="3dp"/>
+                android:drawablePadding="3dp"
+                android:textStyle="italic"
+                app:fontFamily="sans-serif-light"
+                app:layout_constraintEnd_toEndOf="@+id/fullName"
+                app:layout_constraintStart_toStartOf="@+id/fullName"
+                app:layout_constraintTop_toBottomOf="@+id/fullName"
+                tools:text="madammeamberheard@gmail.com" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_percent="0.5"
+                android:orientation="vertical"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/userName"
+                style="@style/TextAppearance.Material3.LabelMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_user_2"
+                android:drawablePadding="3dp"
+                android:layout_marginTop="4dp"
+                app:drawableTint="@color/teal_700"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/email"
+                tools:text="usernamexxyy"
+                android:paddingEnd="2dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/followerCount"
+                style="@style/TextAppearance.Material3.LabelMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_follower_2"
+                android:drawablePadding="3dp"
+                android:paddingStart="5dp"
+                app:drawableTint="@color/teal_700"
+                app:layout_constraintBaseline_toBaselineOf="@+id/userName"
+                app:layout_constraintStart_toEndOf="@+id/guideline"
+                tools:text="12345" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/favorite"
+                style="@style/TextAppearance.Material3.LabelMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextAppearance.Material3.LabelMedium"
-                app:layout_constraintTop_toBottomOf="@+id/email"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="4dp"
                 android:drawableStart="@drawable/ic_favorite"
                 android:drawablePadding="3dp"
-                tools:text="Sony, Bose, Senheisser"
                 app:drawableTint="@color/teal_700"
-                android:layout_marginTop="4dp"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userName"
+                tools:text="Sony, Bose, Senheisser" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/age"
+                style="@style/TextAppearance.Material3.LabelMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="16yrs"
-                app:layout_constraintTop_toBottomOf="@+id/favorite"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                style="@style/TextAppearance.Material3.LabelMedium"
+                android:layout_marginTop="4dp"
                 android:drawableStart="@drawable/ic_age"
                 android:drawablePadding="3dp"
                 app:drawableTint="@color/purple_200"
-                android:layout_marginTop="4dp"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/favorite"
+                tools:text="16yrs" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
