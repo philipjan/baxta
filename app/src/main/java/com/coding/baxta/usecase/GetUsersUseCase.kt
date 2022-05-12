@@ -4,7 +4,7 @@ import com.coding.baxta.local.user.entity.User
 import com.coding.baxta.repository.user.IUserRepository
 import kotlinx.coroutines.flow.Flow
 
-class GetUserUseCase(private val userRepository: IUserRepository) {
+class GetUsersUseCase(private val userRepository: IUserRepository) {
     suspend fun getUsers() {
         userRepository.getUsers()
     }

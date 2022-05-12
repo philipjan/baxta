@@ -16,8 +16,12 @@ abstract class UserDao : BaseDao<User>() {
     abstract suspend fun deleteUsers()
 
     @Query("SELECT * FROM tbl_user WHERE id == :userid")
-    abstract suspend fun getUserIfo(userid: String): User
+    abstract suspend fun getUserInfo(userid: String): User
+
+    @Query("SELECT * FROM tbl_user WHERE id == :userid")
+    abstract fun getUserInfoFlow(userid: String): Flow<User>
 
     @Query("SELECT * FROM tbl_user")
     abstract fun getUserListFlow(): Flow<List<User>>
+
 }

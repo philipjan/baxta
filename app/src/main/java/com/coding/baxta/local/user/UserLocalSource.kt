@@ -19,4 +19,10 @@ class UserLocalSource(private val userDao: UserDao) {
     fun watchUsersLists() =
         userDao.getUserListFlow()
 
+    fun watchUserFlow(userId: String) =
+        userDao.getUserInfoFlow(userId)
+
+    suspend fun watchUser(userId: String) =
+        userDao.getUserInfo(userId)
+
 }

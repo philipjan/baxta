@@ -4,16 +4,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coding.baxta.exceptions.ErrorResponse
 import com.coding.baxta.local.user.entity.UserState
-import com.coding.baxta.usecase.GetUserUseCase
+import com.coding.baxta.usecase.GetUsersUseCase
+import com.coding.baxta.usecase.WatchUserUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class MainActivityViewModel(private val getUserUseCase: GetUserUseCase) : ViewModel() {
+class MainActivityViewModel(
+    private val getUsersUseCase: GetUsersUseCase,
+    private val watchUserUseCase: WatchUserUseCase
+) : ViewModel() {
 
     private val mutableUserState = MutableSharedFlow<UserState>()
     val userState = mutableUserState.asSharedFlow()
@@ -25,15 +26,13 @@ class MainActivityViewModel(private val getUserUseCase: GetUserUseCase) : ViewMo
             }
         ) {
             getUsers()
-            getUserUseCase
+            getUsersUseCase
                 .watchUsersList()
                 .distinctUntilChanged()
                 .collectLatest {
-                    emitState {
-                        mutableUserState.emit(
-                            UserState.GetUserSuccess(it)
-                        )
-                    }
+                    mutableUserState.emit(
+                        UserState.GetUserListSuccess(it)
+                    )
                 }
         }
     }
@@ -44,12 +43,12 @@ class MainActivityViewModel(private val getUserUseCase: GetUserUseCase) : ViewMo
                 showErrorMessage(throwable)
             }
         ) {
-            getUserUseCase.getUsers()
+            getUsersUseCase.getUsers()
         }
     }
 
     private fun showErrorMessage(throwable: Throwable) {
-        emitState {
+        viewModelScope.launch {
             mutableUserState.emit(
                 UserState
                     .Error(
@@ -62,10 +61,18 @@ class MainActivityViewModel(private val getUserUseCase: GetUserUseCase) : ViewMo
         }
     }
 
-    private fun emitState(
-        action: suspend () -> Unit
-    ) = runBlocking {
-        action()
+    fun watchUserInfo(userId: String) {
+        viewModelScope.launch(
+            CoroutineExceptionHandler { coroutineContext, throwable ->
+                showErrorMessage(throwable)
+            }
+        ) {
+            mutableUserState.emit(
+                UserState
+                    .GetUserInfoSuccess(watchUserUseCase.getUserInfo(userId))
+            )
+        }
     }
+
 }
 

@@ -5,7 +5,8 @@ import com.coding.baxta.local.user.UserLocalSource
 import com.coding.baxta.network.user.UserNetworkSource
 import com.coding.baxta.repository.user.IUserRepository
 import com.coding.baxta.repository.user.UserRepositoryImpl
-import com.coding.baxta.usecase.GetUserUseCase
+import com.coding.baxta.usecase.GetUsersUseCase
+import com.coding.baxta.usecase.WatchUserUseCase
 import org.koin.dsl.module
 
 object UserModule {
@@ -15,7 +16,8 @@ object UserModule {
     }
 
     val getUserUseCaseModule = module {
-        factory { GetUserUseCase(get()) }
+        factory { GetUsersUseCase(get()) }
+        factory { WatchUserUseCase(get()) }
     }
 
     val networkUserSourceModule = module {

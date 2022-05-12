@@ -27,4 +27,13 @@ class UserRepositoryImpl(
     override fun listenToUsersList(): Flow<List<User>> {
         return userLocalSource.watchUsersLists()
     }
+
+    override fun watchUserFlow(userId: String): Flow<User> {
+        return userLocalSource.watchUserFlow(userId)
+    }
+
+    override suspend fun watchUser(userId: String): User {
+        val result = userLocalSource.watchUser(userId)
+        return result
+    }
 }

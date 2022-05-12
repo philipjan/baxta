@@ -3,26 +3,21 @@ package com.coding.baxta.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Adapter
 import android.widget.Toast
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.coding.baxta.R
 import com.coding.baxta.databinding.ActivityMainBinding
 import com.coding.baxta.local.user.entity.User
 import com.coding.baxta.local.user.entity.UserState
 import com.coding.baxta.ui.adapter.UserAdapter
 import com.coding.baxta.viewmodel.MainActivityViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     val mainActivityViewModel: MainActivityViewModel by viewModel()
     private lateinit var binder: ActivityMainBinding
@@ -41,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         val llm = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
         binder.recyclerView.layoutManager = llm
         binder.recyclerView.adapter = adapter
-
+        adapter.clickListener = {
+            UserDetailsActivity.startActivity(it.id, this)
+        }
     }
 
     private fun feedData(users: List<User>) {
@@ -58,10 +55,10 @@ class MainActivity : AppCompatActivity() {
                         when (it) {
                             is UserState.Error -> {
                                 it.error?.message?.let { msg ->
-                                    showToast(msg)
+                                    showToast(this@MainActivity, msg)
                                 }
                             }
-                            is UserState.GetUserSuccess -> {
+                            is UserState.GetUserListSuccess -> {
                                 feedData(it.users)
                             }
                         }
@@ -70,11 +67,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun log(msg: String) {
-        Log.d("MainActivity", msg)
-    }
 
-    private fun showToast(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-    }
 }

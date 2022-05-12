@@ -10,7 +10,7 @@ import com.coding.baxta.local.user.entity.User
 
 class UserAdapter : ListAdapter<User, UserAdapter.VH>(UserItemCallback) {
 
-    lateinit var clickListener : (User) -> Unit
+    var clickListener : (User) -> Unit = {}
 
     inner class VH(private val binder: LiUserBinding) : RecyclerView.ViewHolder(binder.root) {
         fun bind(user: User) {
