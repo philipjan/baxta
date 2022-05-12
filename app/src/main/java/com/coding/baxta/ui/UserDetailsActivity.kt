@@ -8,12 +8,16 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.coding.baxta.databinding.ActivityUserDetailsBinding
+import com.coding.baxta.local.user.entity.User
 import com.coding.baxta.local.user.entity.UserState
 import com.coding.baxta.viewmodel.MainActivityViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserDetailsActivity : BaseActivity() {
+
+    val mainActivityViewModel: MainActivityViewModel by viewModel()
+    private lateinit var binder: ActivityUserDetailsBinding
 
     companion object {
         const val KEY_USERID = "user_id"
@@ -24,9 +28,6 @@ class UserDetailsActivity : BaseActivity() {
             ContextCompat.startActivity(activity, i, null)
         }
     }
-
-    val mainActivityViewModel: MainActivityViewModel by viewModel()
-    private lateinit var binder: ActivityUserDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +52,7 @@ class UserDetailsActivity : BaseActivity() {
                         when (it) {
                             is UserState.GetUserInfoSuccess -> {
                                 showToast(this@UserDetailsActivity, "Name: ${it.user.fullName}")
+                                displayData(it.user)
                             }
                             is UserState.Error -> {
                                 it.error?.message?.let { msg ->
@@ -61,5 +63,12 @@ class UserDetailsActivity : BaseActivity() {
                     }
             }
         }
+    }
+
+    private fun displayData(user: User) {
+        binder.fullName.text = user.fullName
+        binder.age.text = user.getAge()
+        binder.email.text = user.email
+        binder.favorite.text = user.favoriteAnimal
     }
 }

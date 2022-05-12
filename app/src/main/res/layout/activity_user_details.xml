@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.UserDetailsActivity">
+    tools:context=".ui.UserDetailsActivity"
+    android:paddingVertical="20dp"
+    android:paddingHorizontal="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.Material3.HeadlineSmall"
+                app:fontFamily="sans-serif"
+                tools:text="Johhny Depp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="madammeamberheard@gmail.com"
+                app:layout_constraintTop_toBottomOf="@+id/fullName"
+                app:layout_constraintStart_toStartOf="@+id/fullName"
+                app:layout_constraintEnd_toEndOf="@+id/fullName"
+                app:fontFamily="sans-serif-light"
+                android:textStyle="italic"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="3dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.Material3.LabelMedium"
+                app:layout_constraintTop_toBottomOf="@+id/email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:drawableStart="@drawable/ic_favorite"
+                android:drawablePadding="3dp"
+                tools:text="Sony, Bose, Senheisser"
+                app:drawableTint="@color/teal_700"
+                android:layout_marginTop="4dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="16yrs"
+                app:layout_constraintTop_toBottomOf="@+id/favorite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                style="@style/TextAppearance.Material3.LabelMedium"
+                android:drawableStart="@drawable/ic_age"
+                android:drawablePadding="3dp"
+                app:drawableTint="@color/purple_200"
+                android:layout_marginTop="4dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

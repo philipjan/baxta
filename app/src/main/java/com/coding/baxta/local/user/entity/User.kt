@@ -15,10 +15,10 @@ data class User(
     val userName: String,
     val dateOfBirth: String
 ) {
-    fun getAge(): Int {
+    fun getAge(): String {
         val date = dateOfBirth.split(" ")[0]
         val year = date.split("-")[0]
         val currentYear = Calendar.getInstance().get(Calendar.YEAR)
-        return currentYear - year.toInt()
+        return "${currentYear - year.toInt()} y.o"
     }
 }
