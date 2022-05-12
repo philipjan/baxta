@@ -1,4 +1,4 @@
-package com.coding.baxta.model
+package com.coding.baxta.model.user
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

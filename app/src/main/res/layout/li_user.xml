@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.Material3.TitleLarge"
+            app:fontFamily="sans-serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text= "Philip Jan Baruis"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.Material3.LabelMedium"
+            app:layout_constraintTop_toBottomOf="@+id/fullName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:drawableStart="@drawable/ic_favorite"
+            android:drawablePadding="3dp"
+            tools:text="Sony, Bose, Senheisser"
+            app:drawableTint="@color/teal_700"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="16yrs"
+            app:layout_constraintTop_toBottomOf="@+id/favorite"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/TextAppearance.Material3.LabelMedium"
+            android:layout_marginTop="4dp"
+            android:drawableStart="@drawable/ic_age"
+            android:drawablePadding="3dp"
+            app:drawableTint="@color/purple_200"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/followerCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_follower"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fullName"
+            app:layout_constraintTop_toTopOf="@+id/fullName"
+            app:layout_constraintBottom_toBottomOf="@+id/age"
+            style="@style/TextAppearance.Material3.LabelSmall"
+            tools:text="10002132312312123121"
+            app:layout_constraintHorizontal_bias="1"
+            android:ellipsize="end"
+            android:maxLength="7"
+            app:drawableTint="@color/purple_700"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>
